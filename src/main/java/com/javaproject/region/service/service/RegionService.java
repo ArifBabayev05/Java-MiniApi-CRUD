@@ -1,5 +1,6 @@
 package com.javaproject.region.service.service;
 
+import com.javaproject.region.service.exception.RegionNotFoundException;
 import com.javaproject.region.service.model.Region;
 import com.javaproject.region.service.repository.RegionRepository;
 import lombok.AllArgsConstructor;
@@ -34,7 +35,7 @@ public class RegionService {
 
     public Region getRegionById(String id) {
         return regionRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Region can not be found"));
+                .orElseThrow(() -> new RegionNotFoundException("Region can not be found"));
     }
 
     public void update(String id, Region newRegion) {
